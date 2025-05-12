@@ -33,29 +33,30 @@ const Gallery: React.FC = () => {
           <div className="h-px w-16 bg-gray-400 mx-auto"></div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {galleryImages.map((image, index) => (
             <div 
               key={image.id} 
-              className="aspect-square overflow-hidden cursor-pointer" 
+              className="aspect-square cursor-pointer overflow-hidden" 
               onClick={() => openModal(index)}
             >
               <img 
                 src={image.url} 
                 alt={image.alt} 
                 className="w-full h-full object-cover transition-transform duration-500 hover:scale-110" 
+                loading="lazy"
               />
             </div>
           ))}
         </div>
       </div>
 
-      {/* Modal */}
       {selectedImage !== null && (
         <div className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4">
           <button 
             className="absolute top-4 right-4 text-white"
             onClick={closeModal}
+            aria-label="Close gallery"
           >
             <X size={32} />
           </button>
@@ -63,7 +64,7 @@ const Gallery: React.FC = () => {
           <img 
             src={galleryImages[selectedImage].url} 
             alt={galleryImages[selectedImage].alt} 
-            className="max-w-full max-h-[90vh] object-contain" 
+            className="max-w-full max-h-[90vh] w-auto h-auto object-contain" 
           />
         </div>
       )}

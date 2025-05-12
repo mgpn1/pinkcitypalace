@@ -9,8 +9,11 @@ interface RoomProps {
 
 const RoomSection: React.FC<RoomProps> = ({ title, description, imageUrl, reverse = false }) => {
   return (
-    <div className={`flex flex-col ${reverse ? 'md:flex-row-reverse' : 'md:flex-row'} min-h-[600px]`}>
-      <div className="w-full md:w-1/2 bg-cover bg-center" style={{ backgroundImage: `url('${imageUrl}')` }}></div>
+    <div className={`flex flex-col ${reverse ? 'md:flex-row-reverse' : 'md:flex-row'}`}>
+      <div 
+        className="w-full md:w-1/2 h-[300px] md:h-[600px] bg-cover bg-center" 
+        style={{ backgroundImage: `url('${imageUrl}')` }}
+      ></div>
       <div className="w-full md:w-1/2 flex items-center bg-gray-50">
         <div className="p-8 md:p-16 lg:p-24">
           <h3 className="text-2xl md:text-3xl font-serif font-light mb-6 tracking-wide text-gray-900">{title}</h3>
